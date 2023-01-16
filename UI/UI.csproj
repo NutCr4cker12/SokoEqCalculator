@@ -58,6 +58,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Engine\Engine.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Views\AboutView.xaml.cs">
 	    <DependentUpon>AboutView.xaml</DependentUpon>
 	  </Compile>
