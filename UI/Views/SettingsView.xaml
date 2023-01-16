@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:SokoEqCalculator.ViewModels"
+             x:Class="SokoEqCalculator.Views.SettingsView"
+             Title="SettingsView">
+    <ContentPage.BindingContext>
+        <viewModels:SettingsViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout
+        Margin="10" Spacing="10"
+        RadioButtonGroup.GroupName="ThemeColorGroup"
+        RadioButtonGroup.SelectedValue="{Binding CurrentTheme}"
+    >
+        <Label Text="Color Theme" />
+        <RadioButton 
+            Content="Light" 
+            Value="Light"
+            CheckedChanged="OnThemeStyleChanged"
+            />
+        <RadioButton 
+            Content="Dark" 
+            Value="Dark"
+            CheckedChanged="OnThemeStyleChanged"
+            />
+        <RadioButton 
+            Content="System" 
+            Value="Unspecified"
+            CheckedChanged="OnThemeStyleChanged"
+            />
+    </VerticalStackLayout>
+</ContentPage>

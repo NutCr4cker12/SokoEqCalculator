@@ -15,8 +15,14 @@
         <ShellContent
             Title="Home"
             Icon="home.png"
-            ContentTemplate="{DataTemplate local:MainPage}"
+            ContentTemplate="{DataTemplate views:MainPage}"
             Route="MainPage" />
+
+        <ShellContent
+            Title="Settings"
+            Icon="settings.png"
+            ContentTemplate="{DataTemplate views:SettingsView}"
+            Route="Settings" />
 
         <ShellContent
             Title="About"

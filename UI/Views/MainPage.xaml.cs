@@ -1,4 +1,4 @@
-﻿namespace SokoEqCalculator;
+﻿namespace SokoEqCalculator.Views;
 
 public partial class MainPage : ContentPage
 {
