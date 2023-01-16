@@ -4,11 +4,27 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:SokoEqCalculator"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:views="clr-namespace:SokoEqCalculator.Views"
+    Shell.TabBarIsVisible="False"
+    >
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem
+        Title="Soko Equity Calculator"
+        FlyoutDisplayOptions="AsMultipleItems"
+        >
+        <ShellContent
+            Title="Home"
+            Icon="home.png"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+
+        <ShellContent
+            Title="About"
+            Icon="about.png"
+            ContentTemplate="{DataTemplate views:AboutView}"
+            Route="About" />
+
+    </FlyoutItem>
+
 
 </Shell>
