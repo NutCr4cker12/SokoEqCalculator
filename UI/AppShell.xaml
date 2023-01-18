@@ -25,12 +25,16 @@
             FlyoutIcon="{AppThemeBinding Light=settings_black.png, Dark=settings_white.png}"
             />
 
-        <ShellContent
+    </FlyoutItem>
+
+    <FlyoutItem
             Title="About"
+            FlyoutIcon="{AppThemeBinding Light=info_black.png, Dark=info_white.png}"
+    >
+        <ShellContent
             ContentTemplate="{DataTemplate views:AboutView}"
             Route="About" 
-            FlyoutIcon="{AppThemeBinding Light=info_black.png, Dark=info_white.png}"
-            />
+        />
     </FlyoutItem>
 
 </Shell>

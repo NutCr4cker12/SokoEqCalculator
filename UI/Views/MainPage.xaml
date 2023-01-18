@@ -1,13 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:SokoEqCalculator.ViewModels"
              x:Class="SokoEqCalculator.Views.MainPage">
 
+    <ContentPage.BindingContext>
+        <viewModels:MainViewModel />
+    </ContentPage.BindingContext>
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
+
+            <HorizontalStackLayout>
+                <Label Text="CardProperty" />
+                <Label Text="{Binding CardProperty.Rank}" />
+                <Label Text="{Binding CardProperty.Suite}" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="CardObs" />
+                <Label Text="{Binding CardObs.Rank}" />
+                <Label Text="{Binding CardObs.Suite}" />
+            </HorizontalStackLayout>
+
+            <Button Text="Change card" Command="{Binding ChangeCardModelCommand}" />
 
             <Image
                 Source="dotnet_bot.png"

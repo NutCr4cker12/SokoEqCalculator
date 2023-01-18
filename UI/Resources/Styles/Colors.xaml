@@ -41,4 +41,9 @@
     <Color x:Key="Blue200Accent">#72ACF1</Color>
     <Color x:Key="Blue300Accent">#A7CBF6</Color>
 
+    <Color x:Key="Spade">#000000</Color>
+    <Color x:Key="Heart">#DC143C</Color>
+    <Color x:Key="Diamond">#0F52BA</Color>
+    <Color x:Key="Club">#50C878</Color>
+
 </ResourceDictionary>

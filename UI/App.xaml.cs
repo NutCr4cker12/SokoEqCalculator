@@ -2,10 +2,11 @@
 
 public partial class App : Application
 {
-	public App()
-	{
-		InitializeComponent();
+    public static ResourceDictionary Colors => Current.Resources.MergedDictionaries.First();
+    public App()
+    {
+        InitializeComponent();
 
-		MainPage = new AppShell();
-	}
+        MainPage = new AppShell();
+    }
 }
