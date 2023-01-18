@@ -3,7 +3,6 @@
     x:Class="SokoEqCalculator.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:SokoEqCalculator"
     xmlns:views="clr-namespace:SokoEqCalculator.Views"
     Shell.TabBarIsVisible="False"
     >
@@ -14,23 +13,24 @@
         >
         <ShellContent
             Title="Home"
-            Icon="home.png"
             ContentTemplate="{DataTemplate views:MainPage}"
-            Route="MainPage" />
+            Route="MainPage" 
+            FlyoutIcon="{AppThemeBinding Light=home_black.png, Dark=home_white.png}"
+            />
 
         <ShellContent
             Title="Settings"
-            Icon="settings.png"
             ContentTemplate="{DataTemplate views:SettingsView}"
-            Route="Settings" />
+            Route="Settings" 
+            FlyoutIcon="{AppThemeBinding Light=settings_black.png, Dark=settings_white.png}"
+            />
 
         <ShellContent
             Title="About"
-            Icon="about.png"
             ContentTemplate="{DataTemplate views:AboutView}"
-            Route="About" />
-
+            Route="About" 
+            FlyoutIcon="{AppThemeBinding Light=info_black.png, Dark=info_white.png}"
+            />
     </FlyoutItem>
-
 
 </Shell>
