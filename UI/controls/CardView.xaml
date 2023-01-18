@@ -12,8 +12,10 @@
             <Label 
                 Text="{Binding CardModel.Rank}" 
                 TextColor="{Binding TextColor}" 
+                FontSize="Large"
+                FontAttributes="Bold"
                 />
-            <Image Source="{Binding ImageSource}" />
+            <Image Source="{Binding ImageSource}" HeightRequest="24" WidthRequest="24"/>
         </HorizontalStackLayout>
     </Frame>
 </ContentView>

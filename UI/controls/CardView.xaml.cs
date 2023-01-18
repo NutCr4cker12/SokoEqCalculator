@@ -35,7 +35,11 @@ public partial class CardView : ContentView
     }
     public static readonly BindableProperty ImageSourceProperty =
             BindableProperty.Create(nameof(ImageSource), typeof(ImageSource), typeof(CardView), defaultValue: null);
-    public ImageSource ImageSource;
+    public ImageSource ImageSource
+    {
+        get => (ImageSource)GetValue(ImageSourceProperty);
+        set => SetValue(ImageSourceProperty, value);
+    }
     public CardView()
     {
         InitializeComponent();

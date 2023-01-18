@@ -18,12 +18,12 @@ internal partial class SettingsViewModel
         _cardObs = new CardModel("A", "s");
     }
 
-    public CardDeckColors TwoColor = CardDeckColors.Two;
-    public CardDeckColors FourColor = CardDeckColors.Four;
-    public CardModel Club = new("A", "c");
-    public CardModel Heart = new("A", "h");
-    public CardModel Spade = new("A", "s");
-    public CardModel Diamond = new("A", "d");
+    public CardDeckColors TwoColored { get; set; } = CardDeckColors.Two;
+    public CardDeckColors FourColored { get; set; } = CardDeckColors.Four;
+    public CardModel Club { get; set; } = new("A", "c");
+    public CardModel Heart { get; set; } = new("A", "h");
+    public CardModel Spade { get; set; } = new("A", "s");
+    public CardModel Diamond { get; set; } = new("A", "d");
 
     public void OnThemeColorChange(AppTheme newTheme)
     {
