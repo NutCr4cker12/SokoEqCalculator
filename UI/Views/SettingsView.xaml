@@ -11,8 +11,13 @@
     <VerticalStackLayout
         Margin="10" Spacing="10"
         RadioButtonGroup.GroupName="ThemeColorGroup"
-        RadioButtonGroup.SelectedValue="{Binding CurrentTheme}"
+        RadioButtonGroup.SelectedValue="{Binding Theme}"
     >
+
+        <Label Text="{Binding Iterations}" />
+        <Slider Maximum="1000000"
+                Minimum="1"
+                Value="{Binding Iterations}" />
 
         <HorizontalStackLayout>
             <Label Text="CardProperty" />

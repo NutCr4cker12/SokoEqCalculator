@@ -1,10 +1,8 @@
-﻿using System.ComponentModel;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SokoEqCalculator.ViewModels;
 
-[INotifyPropertyChanged]
-internal partial class MainViewModel
+internal partial class MainViewModel : ObservableObject
 {
     public MainViewModel()
     {

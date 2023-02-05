@@ -32,7 +32,7 @@ public partial class SettingsView : ContentPage
             "Unspecified" => AppTheme.Unspecified,
             "Light" => AppTheme.Light,
             "Dark" => AppTheme.Dark,
-            _ => throw new ArgumentOutOfRangeException("value", radioButton.Value, "out of range")
+            _ => throw new ArgumentOutOfRangeException(nameof(radioButton.Value), radioButton.Value, "out of range")
         };
         settingsViewModel.OnThemeColorChange(newTheme);
     }

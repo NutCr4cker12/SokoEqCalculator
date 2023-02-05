@@ -2,7 +2,7 @@
 
 public partial class App : Application
 {
-    public static ResourceDictionary Colors => Current.Resources.MergedDictionaries.First();
+    public static ResourceDictionary Colors => Current!.Resources.MergedDictionaries.First();
     public App()
     {
         InitializeComponent();
