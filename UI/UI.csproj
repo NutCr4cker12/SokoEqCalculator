@@ -61,6 +61,9 @@
 	  <Compile Update="controls\CardView.xaml.cs">
 	    <DependentUpon>CardView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="controls\DeckView.xaml.cs">
+	    <DependentUpon>DeckView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\AboutView.xaml.cs">
 	    <DependentUpon>AboutView.xaml</DependentUpon>
 	  </Compile>
@@ -68,6 +71,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="controls\CardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="controls\DeckView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\AboutView.xaml">

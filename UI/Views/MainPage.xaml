@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:SokoEqCalculator.ViewModels"
+             xmlns:controls="clr-namespace:SokoEqCalculator.controls"
              x:Class="SokoEqCalculator.Views.MainPage">
 
     <ContentPage.BindingContext>
@@ -13,21 +14,11 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <HorizontalStackLayout>
-                <Label Text="CardProperty" />
-                <Label Text="{Binding CardProperty.Rank}" />
-                <Label Text="{Binding CardProperty.Suite}" />
-            </HorizontalStackLayout>
-
-            <HorizontalStackLayout>
-                <Label Text="CardObs" />
-                <Label Text="{Binding CardObs.Rank}" />
-                <Label Text="{Binding CardObs.Suite}" />
-            </HorizontalStackLayout>
-
-            <Button Text="Change card" Command="{Binding ChangeCardModelCommand}" />
-
-            <Image
+            <controls:DeckViewNew Deck="{Binding Deck}" 
+                                  OnCardClicked="{Binding DeckCardClickedCommand}"
+                               />
+                               <!--OnCardClicked="{Binding Foo}"-->
+            <!--<Image
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
@@ -44,7 +35,7 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                 FontSize="18"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" />-->
 
         </VerticalStackLayout>
     </ScrollView>

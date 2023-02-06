@@ -2,13 +2,25 @@
 
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Name="this"
+             x:Name="This"
              x:Class="SokoEqCalculator.controls.CardView">
-    <Frame BindingContext="{Reference this}"
-           BackgroundColor="AliceBlue"
-           BorderColor="Gray"
-           >
-        <HorizontalStackLayout>
+    <Frame BindingContext="{Reference This}">
+        <Frame.Resources>
+            <Style TargetType="Frame">
+                <Style.Triggers>
+                    <DataTrigger TargetType="Frame" Binding="{Binding CardModel.IsAvailable}" Value="True">
+                        <Setter Property="Background" Value="AliceBlue" />
+                        <Setter Property="BorderColor" Value="Gray" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Frame" Binding="{Binding CardModel.IsAvailable}" Value="False">
+                        <Setter Property="Background" Value="Gray" />
+                        <Setter Property="BorderColor" Value="Black" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Frame.Resources>
+
+        <HorizontalStackLayout >
             <Label 
                 Text="{Binding CardModel.Rank}" 
                 TextColor="{Binding TextColor}" 

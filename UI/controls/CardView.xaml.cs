@@ -1,4 +1,5 @@
-﻿using SokoEqCalculator.Models;
+﻿using System.Windows.Input;
+using SokoEqCalculator.Models;
 
 namespace SokoEqCalculator.controls;
 
@@ -40,6 +41,7 @@ public partial class CardView : ContentView
         get => (ImageSource)GetValue(ImageSourceProperty);
         set => SetValue(ImageSourceProperty, value);
     }
+
     public CardView()
     {
         InitializeComponent();

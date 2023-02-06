@@ -2,13 +2,19 @@
 
 namespace SokoEqCalculator.Models;
 
-public class CardModel : ObservableObject
+public partial class CardModel : ObservableObject
 {
-    [field: ObservableProperty] public string Rank { get; set; }
-    [field: ObservableProperty] public string Suite { get; set; }
-    public CardModel(string rank, string suite)
+    public int Hash;
+    [ObservableProperty] private string _rank;
+    [ObservableProperty] private string _suite;
+    [ObservableProperty] private bool _isAvailable;
+
+    public CardModel(): this(0, "A", "s"){ }
+    public CardModel(int hash, string rank, string suite, bool available = true)
     {
+        Hash = hash;
         Rank = rank;
         Suite = suite;
+        IsAvailable = available;
     }
 }

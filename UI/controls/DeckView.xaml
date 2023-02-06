@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SokoEqCalculator.controls"
+             x:Class="SokoEqCalculator.controls.DeckViewNew"
+             x:Name="This">
+    <CollectionView BindingContext="{Reference This}" 
+                    ItemsSource="{Binding Deck.Cards}"
+                    MaximumWidthRequest="400"
+                    >
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Vertical" Span="4" />
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <controls:CardView CardModel="{Binding .}" MaximumWidthRequest="100">
+
+                    <controls:CardView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </controls:CardView.GestureRecognizers>
+                </controls:CardView>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentView>

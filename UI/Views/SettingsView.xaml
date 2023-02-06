@@ -19,28 +19,6 @@
                 Minimum="1"
                 Value="{Binding Iterations}" />
 
-        <HorizontalStackLayout>
-            <Label Text="CardProperty" />
-            <Label Text="{Binding CardProperty.Rank}" />
-            <Label Text="{Binding CardProperty.Suite}" />
-            <controls:CardView CardModel="{Binding Spade}" CardDeckColor="{Binding TwoColored}" />
-            <controls:CardView CardModel="{Binding Heart}" CardDeckColor="{Binding TwoColored}" />
-            <controls:CardView CardModel="{Binding Diamond}" CardDeckColor="{Binding TwoColored}" />
-            <controls:CardView CardModel="{Binding Club}" CardDeckColor="{Binding TwoColored}" />
-        </HorizontalStackLayout>
-
-        <HorizontalStackLayout>
-            <Label Text="CardObs" />
-            <Label Text="{Binding CardObs.Rank}" />
-            <Label Text="{Binding CardObs.Suite}" />
-            <controls:CardView CardModel="{Binding Spade}" CardDeckColor="{Binding FourColored}" />
-            <controls:CardView CardModel="{Binding Heart}" CardDeckColor="{Binding FourColored}" />
-            <controls:CardView CardModel="{Binding Diamond}" CardDeckColor="{Binding FourColored}" />
-            <controls:CardView CardModel="{Binding Club}" CardDeckColor="{Binding FourColored}" />
-        </HorizontalStackLayout>
-
-        <Button Text="Change card" Command="{Binding ChangeCardModelCommand}" />
-
         <Label Text="Color Theme" />
         <RadioButton 
             Content="Light" 
