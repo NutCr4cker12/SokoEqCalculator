@@ -64,6 +64,9 @@
 	  <Compile Update="controls\DeckView.xaml.cs">
 	    <DependentUpon>DeckView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="controls\PlayerView.xaml.cs">
+	    <DependentUpon>PlayerView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\AboutView.xaml.cs">
 	    <DependentUpon>AboutView.xaml</DependentUpon>
 	  </Compile>
@@ -74,6 +77,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="controls\DeckView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="controls\PlayerView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\AboutView.xaml">

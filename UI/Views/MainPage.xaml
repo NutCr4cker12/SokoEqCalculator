@@ -14,10 +14,12 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <controls:DeckView Deck="{Binding Deck}" 
+            <controls:PlayerView Player="{Binding Player}" Deck="{Binding Deck}" />
+
+            <!--<controls:DeckView Deck="{Binding Deck}" 
                                   OnCardClicked="{Binding DeckCardClickedCommand}"
-                               />
-                               <!--OnCardClicked="{Binding Foo}"-->
+                               />-->
+
             <!--<Image
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"

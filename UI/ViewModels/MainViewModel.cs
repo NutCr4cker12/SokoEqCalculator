@@ -6,10 +6,12 @@ namespace SokoEqCalculator.ViewModels;
 
 internal partial class MainViewModel : ObservableObject
 {
+    [ObservableProperty] private PlayerModel _player;
     [ObservableProperty] private DeckModel _deck;
     public MainViewModel()
     {
         Deck = new DeckModel();
+        Player = new PlayerModel();
     }
 
     [RelayCommand]
