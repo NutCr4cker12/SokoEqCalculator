@@ -1,12 +1,11 @@
-﻿using System.Windows.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using SokoEqCalculator.Models;
 
 namespace SokoEqCalculator.controls;
 
 public partial class CardView : ContentView
 {
-    public static readonly BindableProperty CardModelProperty =
-            BindableProperty.Create(nameof(CardModel), typeof(CardModel), typeof(CardView), defaultValue: null, propertyChanged: OnCardModelChange);
+    public static readonly BindableProperty CardModelProperty = BindableProperty.Create(nameof(CardModel), typeof(CardModel), typeof(CardView), defaultValue: null, propertyChanged: OnCardModelChange);
     private static void OnCardModelChange(BindableObject bindable, object _, object newValue)
     {
         var self = (CardView)bindable;
@@ -19,27 +18,32 @@ public partial class CardView : ContentView
         set => SetValue(CardModelProperty, value);
     }
 
-    public static readonly BindableProperty CardDeckColorProperty =
-            BindableProperty.Create(nameof(CardDeckColor), typeof(CardDeckColors), typeof(CardView), defaultValue: CardDeckColors.Four);
+    public static readonly BindableProperty CardDeckColorProperty = BindableProperty.Create(nameof(CardDeckColor), typeof(CardDeckColors), typeof(CardView), defaultValue: CardDeckColors.Four);
     public CardDeckColors CardDeckColor
     {
         get => (CardDeckColors)GetValue(CardDeckColorProperty);
         set => SetValue(CardDeckColorProperty, value);
     }
 
-    public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(CardView), defaultValue: Colors.White);
+    public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(CardView), defaultValue: Colors.White);
     public Color TextColor
     {
         get => (Color)GetValue(TextColorProperty);
         set => SetValue(TextColorProperty, value);
     }
-    public static readonly BindableProperty ImageSourceProperty =
-            BindableProperty.Create(nameof(ImageSource), typeof(ImageSource), typeof(CardView), defaultValue: null);
+
+    public static readonly BindableProperty ImageSourceProperty = BindableProperty.Create(nameof(ImageSource), typeof(ImageSource), typeof(CardView), defaultValue: null);
     public ImageSource ImageSource
     {
         get => (ImageSource)GetValue(ImageSourceProperty);
         set => SetValue(ImageSourceProperty, value);
+    }
+
+    public static readonly BindableProperty OnCardClickedProperty = BindableProperty.Create(nameof(OnCardClicked), typeof(RelayCommand<CardModel>), typeof(CardView), defaultValue: null);
+    public RelayCommand<CardModel> OnCardClicked
+    {
+        get => (RelayCommand<CardModel>)GetValue(OnCardClickedProperty);
+        set => SetValue(OnCardClickedProperty, value);
     }
 
     public CardView()
@@ -77,4 +81,10 @@ public partial class CardView : ContentView
         (CardDeckColors.Four, "c") => (dict["Club"], "club_4.png"),
         _ => throw new ArgumentOutOfRangeException($"{nameof(colorType)}:{nameof(suite)} combination out of range. Values were: {colorType}:{suite}")
     };
+
+    
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        OnCardClicked?.Execute(CardModel);
+    }
 }

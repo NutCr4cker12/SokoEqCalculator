@@ -3,9 +3,11 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:SokoEqCalculator.controls"
-             x:Class="SokoEqCalculator.controls.DeckViewNew"
-             x:Name="This">
-    <CollectionView BindingContext="{Reference This}" 
+             x:Class="SokoEqCalculator.controls.DeckView"
+             x:Name="This"
+             >
+    <CollectionView 
+                    BindingContext="{Reference This}" 
                     ItemsSource="{Binding Deck.Cards}"
                     MaximumWidthRequest="400"
                     >
@@ -15,12 +17,11 @@
 
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <controls:CardView CardModel="{Binding .}" MaximumWidthRequest="100">
-
-                    <controls:CardView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                    </controls:CardView.GestureRecognizers>
-                </controls:CardView>
+                <controls:CardView 
+                    MaximumWidthRequest="100"
+                    CardModel="{Binding .}" 
+                    OnCardClicked="{Binding Path=OnCardClicked, Source={RelativeSource AncestorType={x:Type controls:DeckView}}}" 
+                    />
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

@@ -14,7 +14,7 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <controls:DeckViewNew Deck="{Binding Deck}" 
+            <controls:DeckView Deck="{Binding Deck}" 
                                   OnCardClicked="{Binding DeckCardClickedCommand}"
                                />
                                <!--OnCardClicked="{Binding Foo}"-->

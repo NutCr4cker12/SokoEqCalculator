@@ -20,6 +20,10 @@
             </Style>
         </Frame.Resources>
 
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+        </Frame.GestureRecognizers>
+
         <HorizontalStackLayout >
             <Label 
                 Text="{Binding CardModel.Rank}" 
