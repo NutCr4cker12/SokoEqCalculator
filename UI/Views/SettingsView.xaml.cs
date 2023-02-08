@@ -27,13 +27,7 @@ public partial class SettingsView : ContentPage
             return;
         }
 
-        var newTheme = radioButton.Value switch
-        {
-            "Unspecified" => AppTheme.Unspecified,
-            "Light" => AppTheme.Light,
-            "Dark" => AppTheme.Dark,
-            _ => throw new ArgumentOutOfRangeException(nameof(radioButton.Value), radioButton.Value, "out of range")
-        };
+        var newTheme = App.StringToTheme(radioButton.Value as string);
         settingsViewModel.OnThemeColorChange(newTheme);
     }
 }
