@@ -6,14 +6,13 @@
              xmlns:controls="clr-namespace:SokoEqCalculator.controls"
              x:Class="SokoEqCalculator.controls.PlayerView"
              x:Name="This"
-             BindingContext="{Reference This}"
              >
     <ContentView.Resources>
         <ResourceDictionary>
             <system:Double x:Key="ImageSize">44</system:Double>
         </ResourceDictionary>
     </ContentView.Resources>
-    <Frame>
+    <Frame BindingContext="{Reference This}">
     
         <!--<Grid ColumnSpacing="8">
             <Grid.ColumnDefinitions>
@@ -52,12 +51,14 @@
                 Clicked="OpenCardSelectionClicked" />
 
             <Entry
+                x:Name="TextField"
                 MinimumWidthRequest="200"
-                Text="{Binding PrivateText}" 
                 Placeholder="Player Cards"
                 VerticalTextAlignment="Center"
                 ClearButtonVisibility="WhileEditing"
+                IsReadOnly="True"
             />
+                <!--Text="{Binding PrivateText}"--> 
 
             <controls:ThemedImageButton 
                 ImageSource="xmark" 

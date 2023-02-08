@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
-namespace SokoEqCalculator.controls;
+﻿namespace SokoEqCalculator.controls;
 
 public class ThemedImageButton : ImageButton
 {

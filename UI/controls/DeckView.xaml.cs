@@ -21,10 +21,10 @@ public partial class DeckView : ContentView
     }
 
     public static readonly BindableProperty OnCardClickedProperty =
-            BindableProperty.Create(nameof(OnCardClicked), typeof(RelayCommand<CardModel>), typeof(DeckView), defaultValue: null);
-    public RelayCommand<CardModel> OnCardClicked
+            BindableProperty.Create(nameof(OnCardClicked), typeof(IRelayCommand<CardModel>), typeof(DeckView), defaultValue: null);
+    public IRelayCommand<CardModel> OnCardClicked
     {
-        get => (RelayCommand<CardModel>)GetValue(OnCardClickedProperty);
+        get => (IRelayCommand<CardModel>)GetValue(OnCardClickedProperty);
         set => SetValue(OnCardClickedProperty, value);
     }
 

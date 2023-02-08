@@ -10,4 +10,21 @@ public partial class PlayerModel : ObservableObject
     {
         Cards = new List<CardModel>();
     }
+
+    public void RemoveCard(CardModel cardModel)
+    {
+        for (int idx = 0; idx < Cards.Count; idx++)
+        {
+            if (Cards[idx].Hash == cardModel.Hash)
+            {
+                Cards.RemoveAt(idx);
+                return;
+            }
+        }
+    }
+
+    public void AddCard(CardModel cardModel)
+    {
+        Cards.Add(cardModel);
+    }
 }

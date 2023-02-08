@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System.Reflection;
+using System.Windows.Input;
+using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Input;
 using SokoEqCalculator.Models;
 using SokoEqCalculator.Views;
@@ -8,7 +10,7 @@ namespace SokoEqCalculator.controls;
 public partial class PlayerView : ContentView
 {
     public static readonly BindableProperty PlayerProperty =
-            BindableProperty.Create(nameof(Player), typeof(PlayerModel), typeof(PlayerView), defaultValue: null);
+            BindableProperty.Create(nameof(Player), typeof(PlayerModel), typeof(PlayerView));
     public PlayerModel Player
     {
         get => (PlayerModel)GetValue(PlayerProperty);
@@ -16,15 +18,26 @@ public partial class PlayerView : ContentView
     }
 
     public static readonly BindableProperty DeckProperty =
-            BindableProperty.Create(nameof(Deck), typeof(DeckModel), typeof(PlayerView), defaultValue: null);
+            BindableProperty.Create(nameof(Deck), typeof(DeckModel), typeof(PlayerView), propertyChanged: DeckPropertyChanged);
+
+    private static void DeckPropertyChanged(BindableObject bindable, object _, object newvalue)
+    {
+        ((PlayerView)bindable).Deck = (DeckModel)newvalue;
+    }
+
     public DeckModel Deck
     {
         get => (DeckModel)GetValue(DeckProperty);
         set => SetValue(DeckProperty, value);
     }
 
-    public string PrivateText { get; set; }
-    public ICommand TextClearedCommand { get; set; }
+    public static readonly BindableProperty TextClearCommandProperty =
+            BindableProperty.Create(nameof(TextClearedCommand), typeof(ICommand), typeof(PlayerView));
+    public ICommand TextClearedCommand
+    {
+        get => (ICommand)GetValue(TextClearCommandProperty);
+        set => SetValue(TextClearCommandProperty, value);
+    }
     public PlayerView()
     {
         InitializeComponent();
@@ -33,12 +46,28 @@ public partial class PlayerView : ContentView
 
     private void OnTextClear()
     {
-        
+        // TODO PlayerText isn't updated anywhere...
+        TextField.Text = "";
     }
 
-    private async void OpenCardSelectionClicked(object sender, EventArgs e)
+    private void OpenCardSelectionClicked(object sender, EventArgs e)
     {
-        //await Navigation.PushAsync(new AboutView());
-        await Navigation.PushModalAsync(new AboutView());
+        Application.Current.MainPage.ShowPopup(new CardSelectionPopup(Deck, new RelayCommand<CardModel>(OnCardClicked)));
+    }
+
+    private void OnCardClicked(CardModel card)
+    {
+        // TODO Add logic for Card being selected to another player
+        // ^^ needs new properties to CardModel
+        if (card.IsAvailable)
+        {
+            Deck.RemoveCard(card);
+            Player.AddCard(card);
+        }
+        else
+        {
+            Player.RemoveCard(card);
+            Deck.AddCard(card);
+        }
     }
 }
