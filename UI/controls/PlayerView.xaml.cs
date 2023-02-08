@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using SokoEqCalculator.Models;
+using SokoEqCalculator.Views;
 
 namespace SokoEqCalculator.controls;
 
@@ -23,13 +24,21 @@ public partial class PlayerView : ContentView
     }
 
     public string PrivateText { get; set; }
+    public ICommand TextClearedCommand { get; set; }
     public PlayerView()
     {
         InitializeComponent();
+        TextClearedCommand = new Command(execute: OnTextClear, canExecute: () => true);
     }
 
-    private void OpenCardSelectionClicked(object sender, EventArgs e)
+    private void OnTextClear()
     {
         
+    }
+
+    private async void OpenCardSelectionClicked(object sender, EventArgs e)
+    {
+        //await Navigation.PushAsync(new AboutView());
+        await Navigation.PushModalAsync(new AboutView());
     }
 }

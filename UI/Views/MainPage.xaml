@@ -9,12 +9,16 @@
         <viewModels:MainViewModel />
     </ContentPage.BindingContext>
     <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+        <VerticalStackLayout Padding="25" Spacing="25">
 
-            <controls:PlayerView Player="{Binding Player}" Deck="{Binding Deck}" />
+            <controls:PlayerView 
+                Player="{Binding Player}" 
+                Deck="{Binding Deck}" 
+            />
+
+            <controls:PlayerView 
+                Player="{Binding Player}" 
+                Deck="{Binding Deck}" />
 
             <!--<controls:DeckView Deck="{Binding Deck}" 
                                   OnCardClicked="{Binding DeckCardClickedCommand}"

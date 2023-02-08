@@ -1,6 +1,4 @@
-﻿using SokoEqCalculator.Views;
-
-namespace SokoEqCalculator;
+﻿namespace SokoEqCalculator;
 
 public partial class App : Application
 {
@@ -23,6 +21,6 @@ public partial class App : Application
     private void LoadAppTheme()
     {
         var preferredTheme = Preferences.Default.Get("Theme", Current!.RequestedTheme.ToString());
-        Application.Current.UserAppTheme = StringToTheme(preferredTheme);
+        Current.UserAppTheme = StringToTheme(preferredTheme);
     }
 }
