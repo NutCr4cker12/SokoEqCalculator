@@ -31,8 +31,15 @@
                 TextColor="{Binding TextColor}" 
                 FontSize="Medium"
                 FontAttributes="Bold"
+                IsEnabled="{Binding CardModel.IsAvailableForThisPlayer}"
                 />
-            <Image Source="{Binding ImageSource}" HeightRequest="16" WidthRequest="16"/>
+
+            <Image 
+                HeightRequest="16" 
+                WidthRequest="16" 
+                Source="{Binding ImageSource}" 
+                IsEnabled="{Binding CardModel.IsAvailableForThisPlayer}"
+                />
         </HorizontalStackLayout>
     </Frame>
 </ContentView>

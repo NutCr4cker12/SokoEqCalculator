@@ -52,6 +52,7 @@ public partial class PlayerView : ContentView
 
     private void OpenCardSelectionClicked(object sender, EventArgs e)
     {
+        Dealer.SetViewPerspective(Deck, Player);
         Application.Current.MainPage.ShowPopup(new CardSelectionPopup(Player, Deck, new RelayCommand<CardModel>(OnCardClicked)));
     }
 

@@ -8,7 +8,7 @@ public partial class CardModel : ObservableObject
     [ObservableProperty] private string _rank;
     [ObservableProperty] private string _suite;
     [ObservableProperty] private bool _isAvailable;
-    [ObservableProperty] private bool _isUsedByOtherPlayer;
+    [ObservableProperty] private bool _isAvailableForThisPlayer;
     public Guid? BelongsToPlayer { get; private set; }
 
     public CardModel(): this(0, "A", "s"){ }
@@ -18,21 +18,26 @@ public partial class CardModel : ObservableObject
         Rank = rank;
         Suite = suite;
         IsAvailable = true;
-        IsUsedByOtherPlayer = false;
+        IsAvailableForThisPlayer = true;
     }
 
     public void AssignToPlayer(PlayerModel player)
     {
         BelongsToPlayer = player.Id;
         IsAvailable = false;
-        IsUsedByOtherPlayer = false;
+        IsAvailableForThisPlayer = true;
     }
 
     public void RemoveFromPlayer(PlayerModel player)
     {
         BelongsToPlayer = null;
         IsAvailable = true;
-        IsUsedByOtherPlayer = false;
+        IsAvailableForThisPlayer = true;
+    }
+
+    public void UpdateCardBelonging(PlayerModel player)
+    {
+        IsAvailableForThisPlayer = player.Id.Equals(BelongsToPlayer);
     }
 
     public override string ToString() => $"{Rank}{Suite}";

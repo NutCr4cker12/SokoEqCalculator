@@ -13,14 +13,17 @@
         <VerticalStackLayout Padding="25" Spacing="25">
 
             <controls:PlayerView 
-                Player="{Binding Player}" 
+                Player="{Binding Player1}" 
                 Deck="{Binding Deck}" 
             />
 
             <controls:PlayerView 
-                Player="{Binding Player}" 
+                Player="{Binding Player2}" 
                 Deck="{Binding Deck}" />
 
+
+            <!--<controls:CardView CardModel="{Binding Card}" />-->
+            <Button VerticalOptions="End" Command="{Binding CalculateEquityCommand}" Text="Calculate" />
         </VerticalStackLayout>
     </ScrollView>
 

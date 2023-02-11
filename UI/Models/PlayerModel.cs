@@ -4,7 +4,7 @@ namespace SokoEqCalculator.Models;
 
 public partial class PlayerModel : ObservableObject
 {
-    public readonly Guid Id = new ();
+    public readonly Guid Id = Guid.NewGuid();
     [ObservableProperty] private List<CardModel> _cards;
     [ObservableProperty] private string _cardsString;
     public PlayerModel()
