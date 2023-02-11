@@ -6,17 +6,31 @@
              xmlns:controls="clr-namespace:SokoEqCalculator.controls"
              x:Class="SokoEqCalculator.controls.CardSelectionPopup"
              x:Name="This"
-             Size="1200,800"
+             Size="280,680"
 >
-    <VerticalStackLayout 
-        BindingContext="{Reference This}"
+    <Border 
+        Padding="8"
         Background="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-        >
-            <Label Text="Player Cards here" />
-            <controls:DeckView 
-                Deck="{Binding Deck}" 
-                OnCardClicked="{Binding OnCardClicked}"
-                />
-            <Button Text="OK" />
-        </VerticalStackLayout>
+        Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray900}}"
+        BindingContext="{Reference This}"
+    >
+        <FlexLayout Direction="Column">
+            <Entry VerticalOptions="Start"
+                   Placeholder="Player Cards"
+                   VerticalTextAlignment="Center"
+                   Text="{Binding Player.CardsString}" 
+                   IsReadOnly="True" 
+            />
+
+            <controls:DeckView FlexLayout.Grow="1"
+                               VerticalOptions="CenterAndExpand"
+                               Deck="{Binding Deck}" 
+                               OnCardClicked="{Binding OnCardClicked}" />
+
+            <Button VerticalOptions="End"
+                    Text="OK" 
+                    Clicked="ClosePopup"
+            />
+        </FlexLayout>
+    </Border>
 </toolkit:Popup>

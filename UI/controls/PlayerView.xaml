@@ -53,10 +53,11 @@
             <Entry
                 x:Name="TextField"
                 MinimumWidthRequest="200"
+                Text="{Binding Player.CardsString}"
                 Placeholder="Player Cards"
                 VerticalTextAlignment="Center"
-                ClearButtonVisibility="WhileEditing"
-                IsReadOnly="True"
+                ClearButtonVisibility="Never"
+                IsReadOnly="False"
             />
                 <!--Text="{Binding PrivateText}"--> 
 

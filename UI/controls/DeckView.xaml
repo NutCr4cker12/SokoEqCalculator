@@ -9,7 +9,6 @@
     <CollectionView 
                     BindingContext="{Reference This}" 
                     ItemsSource="{Binding Deck.Cards}"
-                    MaximumWidthRequest="400"
                     >
         <CollectionView.ItemsLayout>
             <GridItemsLayout Orientation="Vertical" Span="4" />
@@ -18,7 +17,6 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <controls:CardView 
-                    MaximumWidthRequest="100"
                     CardModel="{Binding .}" 
                     OnCardClicked="{Binding Path=OnCardClicked, Source={RelativeSource AncestorType={x:Type controls:DeckView}}}" 
                     />

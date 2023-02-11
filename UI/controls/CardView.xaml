@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Name="This"
              x:Class="SokoEqCalculator.controls.CardView">
-    <Frame BindingContext="{Reference This}">
+    <Frame BindingContext="{Reference This}" Padding="12,8" HeightRequest="40" WidthRequest="60">
         <Frame.Resources>
             <Style TargetType="Frame">
                 <Style.Triggers>
@@ -24,14 +24,15 @@
             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
         </Frame.GestureRecognizers>
 
-        <HorizontalStackLayout >
+        <HorizontalStackLayout Spacing="1" HorizontalOptions="Center" VerticalOptions="Center" >
             <Label 
+                VerticalTextAlignment="Center"
                 Text="{Binding CardModel.Rank}" 
                 TextColor="{Binding TextColor}" 
-                FontSize="Large"
+                FontSize="Medium"
                 FontAttributes="Bold"
                 />
-            <Image Source="{Binding ImageSource}" HeightRequest="24" WidthRequest="24"/>
+            <Image Source="{Binding ImageSource}" HeightRequest="16" WidthRequest="16"/>
         </HorizontalStackLayout>
     </Frame>
 </ContentView>

@@ -52,22 +52,11 @@ public partial class PlayerView : ContentView
 
     private void OpenCardSelectionClicked(object sender, EventArgs e)
     {
-        Application.Current.MainPage.ShowPopup(new CardSelectionPopup(Deck, new RelayCommand<CardModel>(OnCardClicked)));
+        Application.Current.MainPage.ShowPopup(new CardSelectionPopup(Player, Deck, new RelayCommand<CardModel>(OnCardClicked)));
     }
 
     private void OnCardClicked(CardModel card)
     {
-        // TODO Add logic for Card being selected to another player
-        // ^^ needs new properties to CardModel
-        if (card.IsAvailable)
-        {
-            Deck.RemoveCard(card);
-            Player.AddCard(card);
-        }
-        else
-        {
-            Player.RemoveCard(card);
-            Deck.AddCard(card);
-        }
+        Dealer.HandleCardClick(card, Deck, Player);
     }
 }

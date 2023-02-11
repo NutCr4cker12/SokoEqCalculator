@@ -6,6 +6,14 @@ namespace SokoEqCalculator.controls;
 
 public partial class CardSelectionPopup : Popup
 {
+    public static readonly BindableProperty PlayerProperty =
+            BindableProperty.Create(nameof(Player), typeof(PlayerModel), typeof(CardSelectionPopup));
+    public PlayerModel Player
+    {
+        get => (PlayerModel)GetValue(PlayerProperty);
+        set => SetValue(PlayerProperty, value);
+    }
+
     public static readonly BindableProperty DeckProperty =
             BindableProperty.Create(nameof(Deck), typeof(DeckModel), typeof(CardSelectionPopup));
     public DeckModel Deck
@@ -22,8 +30,9 @@ public partial class CardSelectionPopup : Popup
         set => SetValue(OnCardClickedProperty, value);
     }
 
-    public CardSelectionPopup(DeckModel deck, IRelayCommand<CardModel> onCardClicked)
+    public CardSelectionPopup(PlayerModel player, DeckModel deck, IRelayCommand<CardModel> onCardClicked)
     {
+        Player = player;
         Deck = deck;
         OnCardClicked = onCardClicked;
         InitializeComponent();
@@ -31,5 +40,10 @@ public partial class CardSelectionPopup : Popup
     public CardSelectionPopup()
     {
         InitializeComponent();
+    }
+
+    private void ClosePopup(object sender, EventArgs e)
+    {
+        Close();
     }
 }
