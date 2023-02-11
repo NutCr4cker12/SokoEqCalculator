@@ -12,7 +12,7 @@
     </ContentPage.BindingContext>
     <VerticalStackLayout Padding="25" >
         <ScrollView VerticalOptions="Fill">
-            <VerticalStackLayout Padding="25" Spacing="25">
+            <VerticalStackLayout Spacing="12">
                 <controls:PlayerView 
                     Player="{Binding Player1}" 
                     Deck="{Binding Deck}" 

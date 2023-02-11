@@ -8,19 +8,34 @@
         BindingContext="{Reference This}" 
         HeightRequest="{StaticResource CardHeight}" 
         WidthRequest="{StaticResource CardWidth}"
-        Padding="12,8" 
+        Padding="8,4"
     >
         <Frame.Resources>
             <Style TargetType="Frame">
                 <Style.Triggers>
+                    <MultiTrigger TargetType="Frame">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding CardModel.IsAvailable}" Value="False" />
+                            <BindingCondition Binding="{Binding CardModel.IsAvailableForThisPlayer}" Value="False" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="Background" Value="Gray" />
+                        <Setter Property="BorderColor" Value="Black" />
+                    </MultiTrigger>
+
+                    <MultiTrigger TargetType="Frame">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding CardModel.IsAvailable}" Value="False" />
+                            <BindingCondition Binding="{Binding CardModel.IsAvailableForThisPlayer}" Value="True" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="Background" Value="Yellow" />
+                        <Setter Property="BorderColor" Value="Gray" />
+                    </MultiTrigger>
+
                     <DataTrigger TargetType="Frame" Binding="{Binding CardModel.IsAvailable}" Value="True">
                         <Setter Property="Background" Value="AliceBlue" />
                         <Setter Property="BorderColor" Value="Gray" />
                     </DataTrigger>
-                    <DataTrigger TargetType="Frame" Binding="{Binding CardModel.IsAvailable}" Value="False">
-                        <Setter Property="Background" Value="Gray" />
-                        <Setter Property="BorderColor" Value="Black" />
-                    </DataTrigger>
+
                 </Style.Triggers>
             </Style>
         </Frame.Resources>
@@ -29,9 +44,8 @@
             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
         </Frame.GestureRecognizers>
 
-        <HorizontalStackLayout Spacing="1" HorizontalOptions="Center" VerticalOptions="Center" >
+        <HorizontalStackLayout Spacing="1" VerticalOptions="Center" HorizontalOptions="Center">
             <Label 
-                VerticalTextAlignment="Center"
                 Text="{Binding CardModel.Rank}" 
                 TextColor="{Binding TextColor}" 
                 FontSize="Medium"

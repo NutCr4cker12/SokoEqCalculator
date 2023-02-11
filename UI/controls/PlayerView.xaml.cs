@@ -36,6 +36,7 @@ public partial class PlayerView : ContentView
         get => (ICommand)GetValue(TextClearCommandProperty);
         set => SetValue(TextClearCommandProperty, value);
     }
+    private bool _popupOpen { get; set; }
     public PlayerView()
     {
         InitializeComponent();
@@ -47,14 +48,31 @@ public partial class PlayerView : ContentView
         Dealer.RemoveCardsFromPlayer(Player, Deck);
     }
 
-    private void OpenCardSelectionClicked(object sender, EventArgs e)
-    {
-        Dealer.SetViewPerspective(Deck, Player);
-        Application.Current.MainPage.ShowPopup(new CardSelectionPopup(Player, Deck, new RelayCommand<CardModel>(OnCardClicked)));
-    }
 
     private void OnCardClicked(CardModel card)
     {
         Dealer.HandleCardClick(card, Deck, Player);
     }
+    private void OpenCardSelectionClicked(object sender, EventArgs e) => OpenCardSelection();
+    private void OnEntryTapped(object sender, TappedEventArgs e) => OpenCardSelection();
+    private void TextField_Focused(object sender, FocusEventArgs e)
+    {
+        if (_popupOpen)
+        {
+            return;
+        }
+        OpenCardSelection();
+    }
+    private void OpenCardSelection()
+    {
+        Dealer.SetViewPerspective(Deck, Player);
+        _popupOpen = true;
+        var popup = new CardSelectionPopup(Player, Deck, new RelayCommand<CardModel>(OnCardClicked));
+        popup.Closed += (s, e) =>
+        {
+            _popupOpen = false;
+        };
+        Application.Current!.MainPage!.ShowPopup(popup);
+    }
+
 }
