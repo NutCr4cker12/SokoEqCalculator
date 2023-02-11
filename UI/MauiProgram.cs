@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using SokoEqCalculator.Services;
 using SokoEqCalculator.ViewModels;
 using SokoEqCalculator.Views;
 
@@ -7,9 +8,9 @@ namespace SokoEqCalculator;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit()
@@ -22,12 +23,11 @@ public static class MauiProgram
             .RegisterAppServices();
 
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
-
         return builder.Build();
-	}
+    }
 
     private static MauiAppBuilder RegisterRoutes(this MauiAppBuilder builder)
     {
@@ -39,6 +39,8 @@ public static class MauiProgram
 
     private static MauiAppBuilder RegisterAppServices(this MauiAppBuilder builder)
     {
+        builder.Services.AddSingleton<IPopupService, PopupService>();
+        builder.Services.AddSingleton<IAlertService, AlertService>();
         return builder;
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
-using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Input;
 using SokoEqCalculator.Models;
+using SokoEqCalculator.Services;
 
 namespace SokoEqCalculator.controls;
 
@@ -18,10 +18,7 @@ public partial class PlayerView : ContentView
     public static readonly BindableProperty DeckProperty =
             BindableProperty.Create(nameof(Deck), typeof(DeckModel), typeof(PlayerView), propertyChanged: DeckPropertyChanged);
 
-    private static void DeckPropertyChanged(BindableObject bindable, object _, object newvalue)
-    {
-        ((PlayerView)bindable).Deck = (DeckModel)newvalue;
-    }
+    private static void DeckPropertyChanged(BindableObject bindable, object _, object newvalue) => ((PlayerView)bindable).Deck = (DeckModel)newvalue;
 
     public DeckModel Deck
     {
@@ -41,29 +38,30 @@ public partial class PlayerView : ContentView
     {
         InitializeComponent();
         TextClearedCommand = new Command(execute: OnTextClear, canExecute: () => true);
-    }
+        OpenCardsSelectionButton.Clicked += async (s, e) => await OpenCardSelection();
 
-    private void OnTextClear()
-    {
-        Dealer.RemoveCardsFromPlayer(Player, Deck);
-    }
+        var tabGesture = new TapGestureRecognizer();
+        tabGesture.Tapped += async (s, e) => await OpenCardSelection();
+        TextField.GestureRecognizers.Add(tabGesture);
 
-
-    private void OnCardClicked(CardModel card)
-    {
-        Dealer.HandleCardClick(card, Deck, Player);
-    }
-    private void OpenCardSelectionClicked(object sender, EventArgs e) => OpenCardSelection();
-    private void OnEntryTapped(object sender, TappedEventArgs e) => OpenCardSelection();
-    private void TextField_Focused(object sender, FocusEventArgs e)
-    {
-        if (_popupOpen)
+        TextField.Focused += async (s, e) =>
         {
-            return;
-        }
-        OpenCardSelection();
+            if (_popupOpen)
+            {
+                return;
+            }
+            // Set focus to the Frame because otherwise closing the popup would 
+            // leave the focus on the TextField and re-trigger the opening
+            Grid.Focus();
+            await OpenCardSelection();
+        };
     }
-    private void OpenCardSelection()
+
+    private void OnTextClear() => Dealer.RemoveCardsFromPlayer(Player, Deck);
+
+    private void OnCardClicked(CardModel card) => Dealer.HandleCardClick(card, Deck, Player);
+
+    private async Task OpenCardSelection()
     {
         Dealer.SetViewPerspective(Deck, Player);
         _popupOpen = true;
@@ -72,7 +70,9 @@ public partial class PlayerView : ContentView
         {
             _popupOpen = false;
         };
-        Application.Current!.MainPage!.ShowPopup(popup);
+        var popupService = Handler?.MauiContext?.Services.GetRequiredService<IPopupService>();
+        ArgumentNullException.ThrowIfNull(popupService);
+        await popupService.ShowPopup(popup);
     }
 
 }

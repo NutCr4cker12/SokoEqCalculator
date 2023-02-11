@@ -13,8 +13,9 @@
             <system:Double x:Key="ImageSize">44</system:Double>
         </ResourceDictionary>
     </ContentView.Resources>
-    <Frame BindingContext="{Reference This}">
-        <Grid ColumnSpacing="4">
+    <Grid ColumnSpacing="4"
+          BindingContext="{Reference This}" x:Name="Grid"
+    >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="{StaticResource ImageSize}" />
                 <ColumnDefinition Width="*" />
@@ -22,6 +23,7 @@
             </Grid.ColumnDefinitions>
             <ImageButton 
                 Grid.Column="0"
+                x:Name="OpenCardsSelectionButton"
                 HorizontalOptions="Start"
                 Padding="0"
                 BorderColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}"
@@ -29,25 +31,20 @@
                 CornerRadius="8"
                 HeightRequest="{StaticResource ImageSize}"
                 WidthRequest="{StaticResource ImageSize}"
-                Clicked="OpenCardSelectionClicked" />
+                />
 
             <!--<controls:CardListView Cards="{Binding Player.Cards}" />-->
             <Entry
                 Grid.Column="1"
-                HorizontalOptions="Fill"
                 x:Name="TextField"
+                HorizontalOptions="Fill"
                 Text="{Binding Player.CardsString}"
                 Placeholder="Player Cards"
                 VerticalTextAlignment="Center"
                 ClearButtonVisibility="Never"
                 IsReadOnly="True"
-                Focused="TextField_Focused"
                 HeightRequest="{StaticResource ImageSize}"
-            >
-                <Entry.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnEntryTapped" />
-                </Entry.GestureRecognizers>
-            </Entry>
+            />
 
             <controls:ThemedImageButton 
                 Grid.Column="2"
@@ -59,5 +56,4 @@
                 Command="{Binding TextClearedCommand}"
                 />
         </Grid>
-    </Frame>
 </ContentView>

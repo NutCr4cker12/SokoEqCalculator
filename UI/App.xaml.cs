@@ -23,4 +23,27 @@ public partial class App : Application
         var preferredTheme = Preferences.Default.Get("Theme", Current!.RequestedTheme.ToString());
         Current.UserAppTheme = StringToTheme(preferredTheme);
     }
+
+    protected override Window CreateWindow(IActivationState activationState)
+    {
+        var window = base.CreateWindow(activationState);
+#if WINDOWS
+        window.Width = 580;
+        window.Height = 1180;
+
+        window.Y = 100;
+#endif
+        var w = window.Width;
+        var h = window.Height;
+
+        var x = window.X;
+        var y = window.Y;
+
+        var minW = window.MinimumWidth;
+        var minH = window.MinimumHeight;
+
+        var maxW = window.MaximumWidth;
+        var maxH = window.MaximumHeight;
+        return window;
+    }
 }

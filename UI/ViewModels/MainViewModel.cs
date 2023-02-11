@@ -1,19 +1,20 @@
-﻿using CommunityToolkit.Maui.Alerts;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SokoEqCalculator.Models;
-using static System.Net.Mime.MediaTypeNames;
+using SokoEqCalculator.Services;
 
 namespace SokoEqCalculator.ViewModels;
 
 public partial class MainViewModel : ObservableObject
 {
+    private readonly IAlertService _alertService;
     [ObservableProperty] private PlayerModel _player1;
     [ObservableProperty] private PlayerModel _player2;
     [ObservableProperty] private DeckModel _deck;
     [ObservableProperty] private CardModel _card;
-    public MainViewModel()
+    public MainViewModel(IAlertService alertService)
     {
+        _alertService = alertService;
         Deck = new DeckModel();
         Player1 = new PlayerModel();
         Player2 = new PlayerModel();
@@ -21,7 +22,7 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void OnDeckCardClicked(CardModel model)
+    private void OnPlayerCardClicked(CardModel model)
     {
         //if (model.IsAvailable)
         //{
@@ -38,21 +39,16 @@ public partial class MainViewModel : ObservableObject
     {
         if (Player1.Cards.Count == 0 || Player2.Cards.Count == 0)
         {
-            var snackbar = Snackbar.Make(message: "Players doesn't have cards");
-            await snackbar.Show();
+            await _alertService.ShowAlert("OOPS", "Players doesn't have cards, please check your input");
             return;
         }
 
         if (Player1.Cards.Count != Player2.Cards.Count)
         {
-            var snackbar = Snackbar.Make(message: "Players card count must match");
-            await snackbar.Show();
+            await _alertService.ShowAlert("OOPS", "Players card count must match, please check your input");
             return;
         }
-    }
 
-    private async void ShowError(string text)
-    {
-        var snackbar = Snackbar.Make(message: text);
+        await _alertService.ShowAlert("Sorry", "Not implemented yet but hang in there!");
     }
 }

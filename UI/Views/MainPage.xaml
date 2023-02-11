@@ -6,10 +6,6 @@
              x:Class="SokoEqCalculator.Views.MainPage"
              x:Name="This"
 >
-
-    <ContentPage.BindingContext>
-        <viewModels:MainViewModel />
-    </ContentPage.BindingContext>
     <VerticalStackLayout Padding="25" >
         <ScrollView VerticalOptions="Fill">
             <VerticalStackLayout Spacing="12">
@@ -21,15 +17,15 @@
                 <controls:PlayerView 
                     Player="{Binding Player2}" 
                     Deck="{Binding Deck}" />
-
             </VerticalStackLayout>
+
         </ScrollView>
 
         <Button 
+            Margin="24"
+            Text="Calculate" 
             VerticalOptions="End" 
-            HorizontalOptions="CenterAndExpand"
-            Command="{Binding CalculateEquityCommand}" Text="Calculate" 
+            Command="{Binding CalculateEquityCommand}" 
             />
-
     </VerticalStackLayout>
 </ContentPage>
