@@ -19,6 +19,29 @@ public static class Dealer
         HandleCardRemove(card, deck, player);
     }
 
+    /// <summary>
+    /// Sets the CardProperties of whom the Card is belonging to
+    /// </summary>
+    /// <param name="deck"></param>
+    /// <param name="player"></param>
+    /// <exception cref="NotImplementedException"></exception>
+    public static void SetViewPerspective(DeckModel deck, PlayerModel player)
+    {
+        var usedCards = deck.Cards.Where(n => !n.IsAvailable);
+        foreach (var card in usedCards)
+        {
+            card.UpdateCardBelonging(player);
+        }
+    }
+
+    public static void RemoveCardsFromPlayer(PlayerModel player, DeckModel deck)
+    {
+        foreach (var card in player.Cards.ToList())
+        {
+            HandleCardRemove(card, deck, player);
+        }
+    }
+
     private static void HandleCardAdd(CardModel card, DeckModel deck, PlayerModel player)
     {
         // Player already has 5 cards - can't assign more
@@ -39,18 +62,4 @@ public static class Dealer
         deck.AddCard(card);
     }
 
-    /// <summary>
-    /// Sets the CardProperties of whom the Card is belonging to
-    /// </summary>
-    /// <param name="deck"></param>
-    /// <param name="player"></param>
-    /// <exception cref="NotImplementedException"></exception>
-    public static void SetViewPerspective(DeckModel deck, PlayerModel player)
-    {
-        var usedCards = deck.Cards.Where(n => !n.IsAvailable);
-        foreach (var card in usedCards)
-        {
-            card.UpdateCardBelonging(player);
-        }
-    }
 }

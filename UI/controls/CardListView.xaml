@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SokoEqCalculator.controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:SokoEqCalculator.Models"
+             x:Class="SokoEqCalculator.controls.CardListView"
+             x:Name="This"
+             >
+    <ListView
+        BindingContext="{Reference This}"
+        ItemsSource="{Binding Cards}"
+        WidthRequest="{StaticResource CardWidthX5}"
+    >
+        <!--<ListView.ItemsLayout>
+            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="0" />
+        </ListView.ItemsLayout>-->
+
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="{x:Type models:CardModel}">
+                <ViewCell>
+                    <controls:CardView
+                        VerticalOptions="Start"
+                        MaximumWidthRequest="{StaticResource CardWidth}"
+                        CardModel="{Binding .}"
+                        OnCardClicked="{Binding Path=OnCardClicked, Source={RelativeSource AncestorType={x:Type controls:CardListView}}}" 
+                        />
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        
+    </ListView>
+</ContentView>

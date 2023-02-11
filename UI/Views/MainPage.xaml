@@ -4,27 +4,32 @@
              xmlns:viewModels="clr-namespace:SokoEqCalculator.ViewModels"
              xmlns:controls="clr-namespace:SokoEqCalculator.controls"
              x:Class="SokoEqCalculator.Views.MainPage"
+             x:Name="This"
 >
 
     <ContentPage.BindingContext>
         <viewModels:MainViewModel />
     </ContentPage.BindingContext>
-    <ScrollView>
-        <VerticalStackLayout Padding="25" Spacing="25">
+    <VerticalStackLayout Padding="25" >
+        <ScrollView VerticalOptions="Fill">
+            <VerticalStackLayout Padding="25" Spacing="25">
+                <controls:PlayerView 
+                    Player="{Binding Player1}" 
+                    Deck="{Binding Deck}" 
+                />
 
-            <controls:PlayerView 
-                Player="{Binding Player1}" 
-                Deck="{Binding Deck}" 
+                <controls:PlayerView 
+                    Player="{Binding Player2}" 
+                    Deck="{Binding Deck}" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Button 
+            VerticalOptions="End" 
+            HorizontalOptions="CenterAndExpand"
+            Command="{Binding CalculateEquityCommand}" Text="Calculate" 
             />
 
-            <controls:PlayerView 
-                Player="{Binding Player2}" 
-                Deck="{Binding Deck}" />
-
-
-            <!--<controls:CardView CardModel="{Binding Card}" />-->
-            <Button VerticalOptions="End" Command="{Binding CalculateEquityCommand}" Text="Calculate" />
-        </VerticalStackLayout>
-    </ScrollView>
-
+    </VerticalStackLayout>
 </ContentPage>

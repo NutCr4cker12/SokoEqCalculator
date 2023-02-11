@@ -59,6 +59,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="controls\CardListView.xaml.cs">
+	    <DependentUpon>CardListView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="controls\CardSelectionPopup.xaml.cs">
 	    <DependentUpon>CardSelectionPopup.xaml</DependentUpon>
 	  </Compile>
@@ -77,6 +80,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="controls\CardListView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="controls\CardSelectionPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

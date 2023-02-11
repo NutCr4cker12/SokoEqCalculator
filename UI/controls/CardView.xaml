@@ -4,7 +4,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Name="This"
              x:Class="SokoEqCalculator.controls.CardView">
-    <Frame BindingContext="{Reference This}" Padding="12,8" HeightRequest="40" WidthRequest="60">
+    <Frame 
+        BindingContext="{Reference This}" 
+        HeightRequest="{StaticResource CardHeight}" 
+        WidthRequest="{StaticResource CardWidth}"
+        Padding="12,8" 
+    >
         <Frame.Resources>
             <Style TargetType="Frame">
                 <Style.Triggers>

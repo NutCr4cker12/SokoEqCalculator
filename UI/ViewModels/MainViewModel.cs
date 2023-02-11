@@ -38,7 +38,7 @@ public partial class MainViewModel : ObservableObject
     {
         if (Player1.Cards.Count == 0 || Player2.Cards.Count == 0)
         {
-            var snackbar = Toast.Make(message: "Players doesn't have cards");
+            var snackbar = Snackbar.Make(message: "Players doesn't have cards");
             await snackbar.Show();
             return;
         }

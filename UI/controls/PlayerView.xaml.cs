@@ -1,9 +1,7 @@
-﻿using System.Reflection;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Input;
 using SokoEqCalculator.Models;
-using SokoEqCalculator.Views;
 
 namespace SokoEqCalculator.controls;
 
@@ -46,8 +44,7 @@ public partial class PlayerView : ContentView
 
     private void OnTextClear()
     {
-        // TODO PlayerText isn't updated anywhere...
-        TextField.Text = "";
+        Dealer.RemoveCardsFromPlayer(Player, Deck);
     }
 
     private void OpenCardSelectionClicked(object sender, EventArgs e)

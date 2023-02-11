@@ -15,11 +15,17 @@
         BindingContext="{Reference This}"
     >
         <FlexLayout Direction="Column">
-            <Entry VerticalOptions="Start"
-                   Placeholder="Player Cards"
-                   VerticalTextAlignment="Center"
-                   Text="{Binding Player.CardsString}" 
-                   IsReadOnly="True" 
+            <!--<controls:CardListView 
+                VerticalOptions="Start"
+                Cards="{Binding Player.Cards}"
+                OnCardClicked="{Binding OnCardClicked}" />-->
+            <Entry
+                HorizontalOptions="FillAndExpand"
+                Text="{Binding Player.CardsString}"
+                Placeholder="Player Cards"
+                VerticalTextAlignment="Center"
+                ClearButtonVisibility="Never"
+                IsReadOnly="True"
             />
 
             <controls:DeckView FlexLayout.Grow="1"

@@ -9,7 +9,7 @@
     <CollectionView 
                     BindingContext="{Reference This}" 
                     ItemsSource="{Binding Deck.Cards}"
-                    >
+    >
         <CollectionView.ItemsLayout>
             <GridItemsLayout Orientation="Vertical" Span="4" />
         </CollectionView.ItemsLayout>

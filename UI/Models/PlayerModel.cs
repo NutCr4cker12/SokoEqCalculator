@@ -1,15 +1,16 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SokoEqCalculator.Models;
 
 public partial class PlayerModel : ObservableObject
 {
     public readonly Guid Id = Guid.NewGuid();
-    [ObservableProperty] private List<CardModel> _cards;
+    [ObservableProperty] private ObservableCollection<CardModel> _cards;
     [ObservableProperty] private string _cardsString;
     public PlayerModel()
     {
-        Cards = new List<CardModel>();
+        Cards = new ObservableCollection<CardModel>();
         CardsString = "";
     }
 

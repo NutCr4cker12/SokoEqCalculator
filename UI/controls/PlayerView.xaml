@@ -3,6 +3,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:controls="clr-namespace:SokoEqCalculator.controls"
              x:Class="SokoEqCalculator.controls.PlayerView"
              x:Name="This"
@@ -13,35 +14,15 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <Frame BindingContext="{Reference This}">
-    
-        <!--<Grid ColumnSpacing="8">
+        <Grid ColumnSpacing="12">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{StaticResource ImageSize}" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="{StaticResource ImageSize}" />
             </Grid.ColumnDefinitions>
-                <ImageButton 
-                    Grid.Column="0"
-                    Source="cards_small.png"
-                    BackgroundColor="Gray"
-                    BorderColor="Black"
-                    CornerRadius="5"
-                    Padding="0"
-                    HeightRequest="5"
-                    WidthRequest="5"
-                    Clicked="OpenCardSelectionClicked" />
-
-                <Entry
-                    Grid.Column="1"
-                    HorizontalOptions="Fill"
-                    Text="{Binding PrivateText}" 
-                    Placeholder="Player Cards"
-                    VerticalTextAlignment="Center"
-                    ClearButtonVisibility="WhileEditing"
-                />
-
-        </Grid>-->
-        <HorizontalStackLayout Spacing="8">
             <ImageButton 
+                Grid.Column="0"
+                HorizontalOptions="Start"
                 Padding="4"
                 BorderColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray600}}"
                 Source="cards_small.png"
@@ -50,24 +31,29 @@
                 WidthRequest="{StaticResource ImageSize}"
                 Clicked="OpenCardSelectionClicked" />
 
+            <!--<controls:CardListView Cards="{Binding Player.Cards}" />-->
             <Entry
+                Grid.Column="1"
+                HorizontalOptions="Fill"
                 x:Name="TextField"
-                MinimumWidthRequest="200"
+                toolkit:DockLayout.DockPosition="None"
                 Text="{Binding Player.CardsString}"
                 Placeholder="Player Cards"
                 VerticalTextAlignment="Center"
                 ClearButtonVisibility="Never"
-                IsReadOnly="False"
+                IsReadOnly="True"
+                HeightRequest="{StaticResource ImageSize}"
             />
-                <!--Text="{Binding PrivateText}"--> 
 
             <controls:ThemedImageButton 
+                Grid.Column="2"
+                HorizontalOptions="End"
                 ImageSource="xmark" 
                 Padding="8"
-                HeightRequest="{StaticResource ImageSize}"
                 WidthRequest="{StaticResource ImageSize}" 
+                HeightRequest="{StaticResource ImageSize}"
                 Command="{Binding TextClearedCommand}"
                 />
-        </HorizontalStackLayout>
+        </Grid>
     </Frame>
 </ContentView>
