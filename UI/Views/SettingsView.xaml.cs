@@ -4,8 +4,9 @@ namespace SokoEqCalculator.Views;
 
 public partial class SettingsView : ContentPage
 {
-    public SettingsView()
+    public SettingsView(SettingsViewModel viewModel)
     {
+        BindingContext = viewModel;
         InitializeComponent();
     }
 

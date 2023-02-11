@@ -14,7 +14,7 @@
         <ShellContent
             Title="Home"
             ContentTemplate="{DataTemplate views:MainPage}"
-            Route="MainPage" 
+            Route="Home" 
             FlyoutIcon="{AppThemeBinding Light=home_black.png, Dark=home_white.png}"
             />
 

@@ -1,13 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using SokoEqCalculator.Models;
 
 namespace SokoEqCalculator.ViewModels;
 
-internal partial class SettingsViewModel : ObservableObject
+public partial class SettingsViewModel : ObservableObject
 {
     public SettingsViewModel()
     {
-        _cardObs = new CardModel(0, "A", "s");
     }
 
     public int Iterations
@@ -22,7 +20,11 @@ internal partial class SettingsViewModel : ObservableObject
     public string Theme
     {
         get => Preferences.Default.Get(nameof(Theme), Application.Current!.RequestedTheme.ToString());
-        set => Preferences.Default.Set(nameof(Theme), value);
+        set
+        {
+            Preferences.Default.Set(nameof(Theme), value);
+            OnPropertyChanged();
+        }
     }
     
     public void OnThemeColorChange(AppTheme newTheme)
@@ -30,6 +32,4 @@ internal partial class SettingsViewModel : ObservableObject
         Theme = newTheme.ToString();
         Application.Current!.UserAppTheme = newTheme;
     }
-    [ObservableProperty]
-    private CardModel _cardObs;
 }

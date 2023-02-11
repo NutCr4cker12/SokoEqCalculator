@@ -4,9 +4,9 @@ namespace SokoEqCalculator.Views;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage(MainViewModel mainViewModel)
+    public MainPage(MainViewModel viewModel)
     {
-        BindingContext = mainViewModel;
+        BindingContext = viewModel;
         InitializeComponent();
     }
 }

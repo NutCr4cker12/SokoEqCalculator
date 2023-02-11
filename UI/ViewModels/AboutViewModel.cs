@@ -1,9 +1,10 @@
 ﻿using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace SokoEqCalculator.ViewModels;
 
-internal class AboutViewModel
+public class AboutViewModel : ObservableObject
 {
     public string Title => AppInfo.Name;
     public string Version => AppInfo.VersionString;
