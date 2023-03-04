@@ -11,27 +11,17 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty] private PlayerModel _player1;
     [ObservableProperty] private PlayerModel _player2;
     [ObservableProperty] private DeckModel _deck;
-    [ObservableProperty] private CardModel _card;
     public MainViewModel(IAlertService alertService)
     {
         _alertService = alertService;
         Deck = new DeckModel();
         Player1 = new PlayerModel();
         Player2 = new PlayerModel();
-        Card = new CardModel();
     }
 
     [RelayCommand]
     private void OnPlayerCardClicked(CardModel model)
     {
-        //if (model.IsAvailable)
-        //{
-        //    Deck.RemoveCard(model);
-        //}
-        //else
-        //{
-        //    Deck.AddCard(model);
-        //}
     }
 
     [RelayCommand]

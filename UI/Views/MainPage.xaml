@@ -6,8 +6,11 @@
              x:Class="SokoEqCalculator.Views.MainPage"
              x:Name="This"
 >
-    <VerticalStackLayout Padding="25" >
-        <ScrollView VerticalOptions="Fill">
+    <Grid RowDefinitions="*,Auto" Padding="25">
+        <ScrollView 
+            Grid.Row="0"
+            VerticalOptions="Fill"
+            >
             <VerticalStackLayout Spacing="12">
                 <controls:PlayerView 
                     Player="{Binding Player1}" 
@@ -17,15 +20,16 @@
                 <controls:PlayerView 
                     Player="{Binding Player2}" 
                     Deck="{Binding Deck}" />
-            </VerticalStackLayout>
 
+            </VerticalStackLayout>
         </ScrollView>
 
         <Button 
+            Grid.Row="1"
             Margin="24"
             Text="Calculate" 
             VerticalOptions="End" 
             Command="{Binding CalculateEquityCommand}" 
             />
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>
