@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{53744610-BDB2-4C1F-96B0-C529DFE28955}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine", "Engine\Engine.csproj", "{984A5DC2-3059-40C3-B622-9D6E2B11FC7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Evaluator", "Engine\Evaluator.csproj", "{984A5DC2-3059-40C3-B622-9D6E2B11FC7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
